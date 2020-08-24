@@ -21,6 +21,7 @@ class GreenBOT(commands.Bot):
                                    "cogs.owner"]
             
         self.load_exts()
+        self.remove_command('help')
 
     def _get_prefix(self, bot, message):
         if not message.guild:
@@ -44,7 +45,7 @@ class GreenBOT(commands.Bot):
         return user.id in self.owner_ids
 
     async def on_ready(self):
-        await self.change_presence(activity=discord.Activity(name="with my setup", type=discord.ActivityType.playing))
+        await self.change_presence(activity=discord.Activity(name="with GreenBOT", type=discord.ActivityType.playing))
 
         print(f"\n\nLogged in as: {self.user.name} - {self.user.id}")
         print(f"Version: {discord.__version__}\n")

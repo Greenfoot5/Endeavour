@@ -7,7 +7,7 @@ import time
 
 
 g_command = "git pull".split(' ')
-b_start = f"{sys.executable} GreenBOT.py".split(' ')
+b_start = f"{sys.executable} Endeavour.py".split(' ')
 stopfile = "shutdown"
 
 if os.path.isfile(stopfile):
