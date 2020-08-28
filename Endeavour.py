@@ -7,7 +7,7 @@ import asyncio
 import discord
 from discord.ext import commands
 
-class GreenBOT(commands.Bot):
+class Endeavour(commands.Bot):
     def __init__(self):
         super().__init__(
             command_prefix=self._get_prefix,
@@ -18,7 +18,8 @@ class GreenBOT(commands.Bot):
             270190067354435584 # Green
             ]
         self.initial_extensions = ["cogs.error_handler",
-                                   "cogs.owner"]
+                                   "cogs.owner",
+                                   "cogs.wanted"]
             
         self.load_exts()
         self.remove_command('help')
@@ -60,4 +61,4 @@ if __name__ == "__main__":
     if "win" in sys.platform:
         asyncio.set_event_loop(asyncio.ProactorEventLoop())
 
-    GreenBOT().run()
+    Endeavour().run()
