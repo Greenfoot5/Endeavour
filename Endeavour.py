@@ -19,7 +19,9 @@ class Endeavour(commands.Bot):
             ]
         self.initial_extensions = ["cogs.error_handler",
                                    "cogs.owner",
-                                   "cogs.wanted"]
+                                   "cogs.wanted",
+                                   "cogs.info",
+                                   "cogs.module_manager"]
             
         self.load_exts()
         self.remove_command('help')
