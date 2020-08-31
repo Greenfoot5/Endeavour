@@ -332,7 +332,7 @@ class Wanted(commands.Cog):
             
         try:
             MemberXP = ServerXP["members"][str(ctx.author.id)]
-            if MemberXP["timeOfNextEarn"] < time.time():
+            if MemberXP["timeOfNextEarn"] > time.time():
                 return
         except KeyError:
             MemberXP = {"xp": 0, "timeOfNextEarn": 0}
