@@ -92,13 +92,13 @@ class Wanted(commands.Cog):
                         try:
                             score = scores["wanted"][str(member.id)]
                         except KeyError:
-                            score = random.randint(1, 9) * (10 ** random.randint(0, 12))
+                            score = random.randint(1, 9) * (10 ** random.randint(0, 10))
                             scores["wanted"][str(member.id)] = score
                             data_handler.dump(scores, "wanted")
                             
 
                         #we draw it on
-                        fontDraw.multiline_text(xy=(0,0),text=f"{score}",fill=0x008800,font=numberFont,align="center",spacing=2)
+                        fontDraw.multiline_text(xy=(0,0),text='{:,}'.format(score),fill=0x008800,font=numberFont,align="center",spacing=2)
 
                         background.paste((56, 46, 46),(70,500),mask=mask)
 
@@ -135,9 +135,10 @@ class Wanted(commands.Cog):
                         #We get the suffix
                         XPList = data_handler.load("wanted")
                         suffix = XPList[str(ctx.guild.id)]["suffix"]
+                        value = xp + suffix
                         
                         #we draw it on
-                        fontDraw.multiline_text(xy=(0,0),text=f"{xp}{suffix}",fill=0x008800,font=numberFont,align="center",spacing=2)
+                        fontDraw.multiline_text(xy=(0,0),text='{:,}'.format(value),fill=0x008800,font=numberFont,align="center",spacing=2)
 
                         background.paste((56, 46, 46),(70,500),mask=mask)
 
@@ -192,16 +193,18 @@ class Wanted(commands.Cog):
         #this means that if the user does not supply a member, it will default to the author of the message.
         member = member or ctx.author
 
-        XPList = data_handler.load("wanted")
+        servers = data_handler.load('servers')
         
         # Check the server has wanted enabled.
         try:
-            if XPList[str(ctx.guild.id)]["enabled"] == False:
+            if servers[str(ctx.guild.id)]['modules']["bounty"] == False:
                 await ctx.send("Bounty not enabled.")
                 return
         except KeyError:
             await ctx.send("Bounty not enabled.")
             return
+
+        XPList = data_handler.load("wanted")
             
         try:
             MemberXP = XPList[str(ctx.guild.id)]["members"][str(member.id)]['xp']
@@ -257,6 +260,17 @@ class Wanted(commands.Cog):
             return
         if placement is None:
             placement = 1
+        
+        # Check the server has wanted enabled.
+        servers = data_handler.load('servers')
+        try:
+            if servers[str(ctx.guild.id)]['modules']["bounty"] == False:
+                await ctx.send("Bounty not enabled.")
+                return
+        except KeyError:
+            await ctx.send("Bounty not enabled.")
+            return
+
         XPList = data_handler.load("wanted")
         
         rankings = []
@@ -320,7 +334,8 @@ class Wanted(commands.Cog):
         
         try:
             ServerXP = XPList[str(ctx.guild.id)]
-            if ServerXP["enabled"] == False:
+            servers = data_handler.load('servers')
+            if servers[str(ctx.guild.id)]["modules"]["bounty"] == False:
                 return
         except KeyError:
             return
