@@ -111,3 +111,6 @@ tooken.py
 # Ignore data files
 data/profiles.json
 data/servers.json
+
+# Ignore server specifc files
+cogs/scrim.py
