@@ -99,7 +99,8 @@ class ModuleManager(commands.Cog):
             server = servers[str(ctx.guild.id)]
 
         server["modules"][module] = True
-        servers[set(ctx.guild.id)] = server
+        print(servers)
+        servers[str(ctx.guild.id)] = server
         data_handler.dump(servers, "servers")
 
         await ctx.send(f"`{module}` has been enabled.`")
@@ -131,7 +132,7 @@ class ModuleManager(commands.Cog):
             server = servers[str(ctx.guild.id)]
 
         server["modules"][module] = False
-        servers[set(ctx.guild.id)] = server
+        servers[str(ctx.guild.id)] = server
         data_handler.dump(servers, "servers")
 
         await ctx.send(f"`{module}` has been disabled.`")

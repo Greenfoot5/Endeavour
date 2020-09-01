@@ -134,8 +134,11 @@ class Wanted(commands.Cog):
                         
                         #We get the suffix
                         XPList = data_handler.load("wanted")
-                        suffix = XPList[str(ctx.guild.id)]["suffix"]
-                        value = xp + suffix
+                        try:
+                            suffix = XPList[str(ctx.guild.id)]["suffix"]
+                        except:
+                            suffix = 3
+                        value = xp * (10 ** suffix)
                         
                         #we draw it on
                         fontDraw.multiline_text(xy=(0,0),text='{:,}'.format(value),fill=0x008800,font=numberFont,align="center",spacing=2)
@@ -330,15 +333,26 @@ class Wanted(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, ctx):
-        XPList = data_handler.load("wanted")
-        
+
         try:
-            ServerXP = XPList[str(ctx.guild.id)]
             servers = data_handler.load('servers')
             if servers[str(ctx.guild.id)]["modules"]["bounty"] == False:
                 return
         except KeyError:
             return
+            
+        XPList = data_handler.load("wanted")
+        
+        try:
+            ServerXP = XPList[str(ctx.guild.id)]
+        except KeyError:
+            XPList[str(ctx.guild.id)] = { "min": 20,
+            "max": 30,
+            "blacklist": [],
+            "suffix": 3,
+            "members": {}
+            }
+            ServerXP = XPList[str(ctx.guild.id)]
             
         if ctx.author.bot == True:
             return
