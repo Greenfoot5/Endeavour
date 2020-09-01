@@ -47,7 +47,7 @@ class CommandErrorHandler(commands.Cog):
 
         # Anything in ignored will return and prevent anything happening.
         if isinstance(error, ignored):
-            await ctx.send(f"`{error}`")
+            #await ctx.send(f"`{error}`")
             return
 
         elif isinstance(error, commands.UserInputError):
