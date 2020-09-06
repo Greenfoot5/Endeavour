@@ -1,0 +1,85 @@
+{
+    "436600674017476608": {
+        "achievements": {
+            "getting started": {
+                "I": {
+                    "missions": [
+                        {
+                            "id": "intro",
+                            "title": "Send a message in #introduce-yourself",
+                            "amount": 1,
+                            "type": "manual"
+                        },
+                        {
+                            "id": "messages",
+                            "title": "Send some messages",
+                            "amount": 50,
+                            "type": "manual"
+                        }
+                    ],
+                    "rewards": {
+                        "points": 69
+                    },
+                    "difficulty": "Easy",
+                    "hex": "3d5576",
+                    "img": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FaDAPK5Uch8c%2Fmaxresdefault.jpg&f=1&nofb=1"
+                },
+                "II": {
+                    "missions": [
+                        {
+                            "id": "mafia",
+                            "title": "Join your first mafia game",
+                            "amount": 1,
+                            "type": "manual"
+                        },
+                        {
+                            "id": "messages",
+                            "title": "Send some more messages",
+                            "amount": 100,
+                            "type": "manual"
+                        }
+                    ],
+                    "rewards": {
+                        "points": 105
+                    },
+                    "difficulty": "Easy",
+                    "hex": "3d5576",
+                    "img": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FaDAPK5Uch8c%2Fmaxresdefault.jpg&f=1&nofb=1"
+                },
+                "III": {
+                    "missions": [
+                        {
+                            "id": "messages",
+                            "title": "EVEN MOAR MESSAGES!",
+                            "amount": 250,
+                            "type": "manual"
+                        }
+                    ],
+                    "rewards": {
+                        "points": 96
+                    },
+                    "difficulty": "Medium",
+                    "hex": "3d5576",
+                    "img": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FaDAPK5Uch8c%2Fmaxresdefault.jpg&f=1&nofb=1"
+                },
+                "stages": [
+                    "I",
+                    "II",
+                    "III"
+                ]
+            }
+        },
+        "members": {
+            "270190067354435584": {
+                "getting started": {
+                    "stage": 1,
+                    "progress": {
+                        "mafia": 0,
+                        "messages": 0
+                    }
+                },
+                "points": 0
+            }
+        }
+    }
+}
